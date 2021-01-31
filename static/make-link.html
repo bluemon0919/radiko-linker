@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>radiko linker</title>
+<script>
+    const BASE_URL = "http://localhost:8080/jump/";
+    // 入力情報からリンクを作成する
+    function create(e) {
+        console.log("実行されました")
+        let station = document.getElementById("station").value;
+        if ("" == station) {
+            console.log("ラジオ局が入力されていません");
+            return
+        }
+        let weekdayValue = document.getElementById("weekday").value;
+        let weekday = 0;
+        if ("" == weekdayValue) {
+            console.log("曜日が入力されていません");
+            return
+        }else{
+            switch(weekdayValue) {
+                case "Sunday":
+                weekday = 0;break;
+                case "Monday":
+                weekday = 1;break;
+                case "Tuesday":
+                weekday = 2;break;
+                case "Wednesday":
+                weekday = 3;break;
+                case "Thursday":
+                weekday = 4;break;
+                case "Friday":
+                weekday = 5;break;
+                case "Saturday":
+                weekday = 6;break;
+            }
+        }
+        let startTime = document.getElementById("startTime").value;
+        if ("" == startTime) {
+            console.log("開始時間が入力されていません");
+            return
+        }
+        document.getElementById("createdURL").value = BASE_URL + station + "/" + weekday + "/" + startTime
+    }
+
+    // 作成したリンクをクリップボードにコピーする
+    function copyToClipboard() {
+        let createdURL = document.getElementById("createdURL");
+        createdURL.select();
+        document.execCommand("Copy");
+    }
+
+    // 試聴用に作成したリンクにジャンプする
+    function jumpToLink() {
+        console.log("jumpToLink");
+        let createdURL = document.getElementById("createdURL");
+        if (createdURL.value == "") {
+            console.log("createdURL.value is empty.");
+        }
+        window.open(createdURL.value, '_blank');
+    }
+</script>
+</head>
+<body>
+    <h2>
+        リンク作成画面です
+    </h2>
+    <form id="enter">
+        <p>選局情報を入力してください</p>
+        <input id="station" type="text" placeholder="TBS"/>
+        <input id="weekday" list="weekdayList" placeholder="Sunday">
+        <input id="startTime" type="text" placeholder="25:00"/>
+        <input type="button" onclick="create()" value="作成"/>
+    </form>
+    <div>
+        <input id="createdURL" size=50>
+        <input type="button" onclick="copyToClipboard()" value="コピー"/>
+        <input type="button" onclick="jumpToLink()" value="試聴"/>
+    </div>
+    
+    <datalist id="weekdayList">
+        <option value="Sunday"></option>
+        <option value="Monday"></option>
+        <option value="Tuesday"></option>
+        <option value="Wednesday"></option>
+        <option value="Thursday"></option>
+        <option value="Friday"></option>
+        <option value="Saturday"></option>
+    </datalist>
+</body>
+</html>

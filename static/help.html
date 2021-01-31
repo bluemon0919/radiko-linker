@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>radiko linker</title>
+<script>
+    function jumpToLink() {
+        console.log("jumpToLink");
+        window.location.href = "/make-link";
+    }
+</script>
+</head>
+<body>
+    <h2>
+        サービスについて
+    </h2>
+    radikoで公開されている番組へのリンクを作成するサービスです。<br>
+    利用にはradikoへアクセスできる環境を用意する必要があります。<br>
+    <ul>
+        <li>スマートフォンの場合はradikoアプリを事前にインストールしてください。</li>
+        <li>住まいの地域以外の番組を試聴するためには、radikoプレミアム会員に登録する必要があります。</li>
+    </ul>
+    下のボタンからリンク作成ページにアクセスしてください。<br><br>
+    <div>
+        <input type="button" onclick="jumpToLink()" value="リンク作成ページ"/>
+    </div>
+</body>
+</html>
