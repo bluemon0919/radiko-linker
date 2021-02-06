@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <title>radiko linker</title>
 <script>
-    const BASE_URL = "http://localhost:8080/jump/";
+    // プロトコルとポート番号を含むホスト部を取得する
+    let BASE_URL = location.protocol + "//" + location.host + "/jump";
     // 入力情報からリンクを作成する
     function create(e) {
         console.log("実行されました")
@@ -41,7 +42,7 @@
             console.log("開始時間が入力されていません");
             return
         }
-        document.getElementById("createdURL").value = BASE_URL + station + "/" + weekday + "/" + startTime
+        document.getElementById("createdURL").value = BASE_URL + "/" + station + "/" + weekday + "/" + startTime
     }
 
     // 作成したリンクをクリップボードにコピーする
