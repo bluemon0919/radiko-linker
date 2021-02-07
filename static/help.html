@@ -2,6 +2,17 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<style>
+    @media screen and (max-width:480px) {
+	main {
+		width: 100%;
+	}
+	body {
+		font-size: 20px;
+	}
+}
+</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>radiko linker</title>
 <script>
     function jumpToLink() {
@@ -11,6 +22,7 @@
 </script>
 </head>
 <body>
+    <main>
     <h2>
         サービスについて
     </h2>
@@ -21,6 +33,7 @@
         <li>住まいの地域以外の番組を試聴するためには、radikoプレミアム会員に登録する必要があります。</li>
     </ul>
     下のボタンからリンク作成ページにアクセスしてください。<br><br>
+    </main>
     <div>
         <input type="button" onclick="jumpToLink()" value="リンク作成ページ"/>
     </div>

@@ -2,6 +2,25 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<style type="text/css">
+    @media screen and (max-width:480px) {
+        main {
+            width: 100%;
+        }
+        body {
+            font-size: 20px;
+        }
+        input.in {
+            width: 100%;
+            height:40px;
+            font-size: 20px;
+        }
+        div.item {
+            margin: 5px;
+        }
+    }
+</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>radiko linker</title>
 <script>
     // プロトコルとポート番号を含むホスト部を取得する
@@ -64,18 +83,30 @@
 </script>
 </head>
 <body>
+    <main>
     <h2>
         リンク作成画面です
     </h2>
     <form id="enter">
         <p>選局情報を入力してください</p>
-        <input id="station" type="text" placeholder="TBS"/>
-        <input id="weekday" list="weekdayList" placeholder="Sunday">
-        <input id="startTime" type="text" placeholder="25:00"/>
-        <input type="button" onclick="create()" value="作成"/>
+        <div class="item">
+            <label>局番 - station number</label><br>
+            <input class="in" id="station" type="email" placeholder="TBS"/><br>
+        </div>
+        <div class="item">
+            <label>曜日 - day of the week</label><br>
+            <input class="in" id="weekday" list="weekdayList" placeholder="Sunday"><br>
+        </div>
+        <div class="item">
+            <label>放送時間 - broadcast time</label><br>
+            <input class="in" id="startTime" type="datetime" placeholder="25:00"/><br>
+        </div>
+        <div class="item">
+            <input class="button" type="button" onclick="create()" value="作成"/>
+        </div>
     </form>
-    <div>
-        <input id="createdURL" size=50>
+    <div class="item">
+        <input class="in" id="createdURL" size=50>
         <input type="button" onclick="copyToClipboard()" value="コピー"/>
         <input type="button" onclick="jumpToLink()" value="試聴"/>
     </div>
@@ -89,5 +120,6 @@
         <option value="Friday"></option>
         <option value="Saturday"></option>
     </datalist>
+    </main>
 </body>
 </html>
