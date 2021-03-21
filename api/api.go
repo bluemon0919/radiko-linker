@@ -40,7 +40,8 @@ func (w *WebAPI) JumpAPI(c *gin.Context) {
 	if url != "" {
 		fmt.Println("url=", url)
 		// url = "http://radiko.jp/share/?sid=TBS&t=20210125150000"
-		http.Redirect(c.Writer, c.Request, url, 301) // リダイレクトする
+		http.Redirect(c.Writer, c.Request, url, 302)
+		// リダイレクトのStatusCodeを301にするとブラウザがページをキャッシュしてしまう
 	} else {
 		c.JSON(http.StatusInternalServerError, url)
 	}
